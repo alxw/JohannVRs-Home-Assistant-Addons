@@ -154,6 +154,27 @@ quoted_value="\"$escaped_value\""
 # Replace line in config file using sed (target 9th line)
 sed -i "287s/.*/        publish_cover = $quoted_value/" "$config_file"
 
+################################################### ignore volume control ###################################################
+
+# Get arguments
+json_key="ignore_volume_control"
+
+# Extract value from JSON using jq
+value=$(jq -r ".$json_key" "$json_file")
+
+# Check if value extraction was successful
+if [ $? -ne 0 ]; then
+  echo "Error: Could not extract value from JSON using key '$json_key'."
+  exit 1
+fi
+
+# Escape backslashes and dollar signs for safe sed usage
+escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
+quoted_value="\"$escaped_value\""
+
+# Replace line in config file using sed (target 9th line)
+sed -i "37s/.*/        publish_cover = $quoted_value/" "$config_file"
+
 ################################################### audio backend ###################################################
 
 # Replace line in config file using sed (target 9th line)
