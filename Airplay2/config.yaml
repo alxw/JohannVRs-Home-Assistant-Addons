@@ -19,6 +19,7 @@ options:
   mqtt_username: "user"
   mqtt_password: "password"
   mqtt_publish_cover: "no"
+  ignore_volume_control: "no"
 schema:
   airplay_name: str
   offset: str
@@ -27,4 +28,5 @@ schema:
   mqtt_username: str
   mqtt_password: password
   mqtt_publish_cover: str
+  ignore_volume_control: str
 image: "johannvr/ha-airplay2-{arch}-debian"
