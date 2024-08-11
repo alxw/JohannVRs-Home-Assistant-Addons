@@ -172,8 +172,8 @@ fi
 escaped_value=$(echo "$value" | sed 's/\\//g' | sed 's/\$/\\\\$/g')
 quoted_value="\"$escaped_value\""
 
-# Replace line in config file using sed (target 9th line)
-sed -i "37s/.*/        publish_cover = $quoted_value/" "$config_file"
+# Replace line in config file using sed (target line 37)
+sed -i "37s/.*/        ignore_volume_control = $quoted_value/" "$config_file"
 
 ################################################### audio backend ###################################################
 
